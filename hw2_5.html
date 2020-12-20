@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    'use strict'
+
+    function addition (a, b) {
+
+      return result = a + b;
+
+    };
+
+    function subtraction(a, b) {
+
+      return result = a - b;
+
+    };
+
+    function division (a, b) {
+
+      return result = a / b;
+
+    };
+
+    function multiplication (a, b) {
+
+      return result = a * b;
+
+    };
+
+    function mathOperation (arg1, arg2, operation) {
+
+      switch (operation) {
+        case addition:
+          addition(x, y);
+          break;
+
+        case subtraction:
+          subtraction(x, y);
+          break;
+
+        case division:
+          division(x, y);
+          break;
+
+        case multiplication:
+          multiplication(x, y);
+          break;
+      }
+
+    };
+
+    let x = +prompt("Введите 1-е число");
+
+    let y = +prompt("Введите 2-е число");
+
+    mathOperation(x, y, multiplication);
+    alert("Результат операции: " + result);
+
+  </script>
+</body>
+</html>

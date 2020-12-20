@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    'use strict'
+
+    //пример 1
+    let a = 1, b = 1, c, d;
+    c = ++a;
+    alert(c); //ответ 2, потому что переменной 'c' присваивается сумма 'a+1'
+
+    //пример 2
+    d = b++;
+    alert(d); //ответ: 1, потому что это постфиксная запись инкремента, а именно переменной 'd' сначала присваивается изначальное значение переенной 'b'
+
+    //пример 3
+    c = 2 + ++a;
+    alert(c); //ответ: 5, потому что переменной 'c' присваивается сумма '2+(2+1))'
+
+    //пример 4
+    d = 2 + b++;
+    alert(d); //ответ: 4, потому что переменной 'd' присваивается сумма '2+2'
+
+    alert(a); //3, потому что перемнная 'a' была увеличена на 1 в примере 3
+    alert(b); //3, потому что переменная 'b' была увеличена на 1 в примере 4
+
+  </script>
+</body>
+</html>
