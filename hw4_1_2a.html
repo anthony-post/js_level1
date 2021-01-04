@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <script>
+      'use strict'
+
+      //функция Констуктор в стиле ES5
+      function Post(author, text, date) {
+          this.author = author;
+          this.text = text;
+          this.date = date;
+      }
+
+      Post.prototype.edit = function(editedText) {
+          this.text = editedText;
+      };
+
+      let editedText = 'new_text';
+
+      const post1 = new Post('Author1', 'lorem', '1 dec 2020');
+      const post2 = new Post('Author2', 'ipsum', '11 dec 2020');
+      const post3 = new Post('Author3', 'example', '21 dec 2020');
+      const post4 = new Post('Author4', editedText, '31 dec 2020');
+
+      post1.edit(editedText);
+      post2.edit('sample text');
+      post3.edit('');
+
+      console.log(post1);
+      console.log(post2);
+      console.log(post3);
+      console.log(post4);
+
+      //функция Конструктор в стиле ES6
+      class Post2 {
+          constructor(author2, text2, date2) {
+            this.author2 = author2;
+            this.text2 = text2;
+            this.date2 = date2;
+          }
+
+          edit(editedText2) {
+              this.text2 = editedText2;
+          }
+      }
+
+      let editedText2 = 'new_text2';
+      let post5 = new Post2('Author5', 'lorem ipsum', '5 dec 2020');
+
+      post5.edit(editedText2);
+
+      console.log(post5);
+
+    </script>
+</body>
+</html>

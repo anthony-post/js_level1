@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <script>
+      'use strict'
+
+      //функция Констуктор в стиле es5
+      function Post(author, text, date) {
+          this.author = author;
+          this.text = text;
+          this.date = date;
+      }
+
+      //с помощью прототипа создаем ПОВЕДЕНИЕ (метод) у объекта
+      Post.prototype.edit = function(editedText) {
+          this.text = editedText;
+      };
+
+      //функция-конструктор AttachedPost унаследует ДАННЫЕ (свойства объектов) функции-конструктора Post и создает свойство highlighted
+      function AttachedPost(author, text, date, highlighted) {
+          Post.call(this, author, text, date);
+          this.highlighted = highlighted;
+      }
+
+      //наследуем ПОВЕДЕНИЕ (методы) функции-конструктора Post для функции-конструктора AttachedPost
+      AttachedPost.prototype = Object.create(Post.prototype);
+      AttachedPost.prototype.constructor = AttachedPost;
+
+      //создаем ПОВЕДЕНИЕ (метод) у AttachedPost
+      AttachedPost.prototype.makeTextHighlighted = function() {
+          this.highlighted = true;
+      };
+
+      //объявляем переменную и присваиваем ей значение. Эта переменная будет параметром при вызове метода 'edit'
+      let editedText = 'new_text';
+
+      //создаем объекты с помощью функции-конструктора
+      const post1 = new Post('Author1', 'lorem', '1 dec 2020');
+      const post2 = new Post('Author2', 'ipsum', '11 dec 2020');
+      const post3 = new Post('Author3', 'example', '21 dec 2020');
+      const post4 = new Post('Author4', editedText, '31 dec 2020');
+
+      //создаем объект attachedPost1 с помощью функции-конструктора, которой передаем начальные значения свойства объекта
+      const attachedPost1 = new AttachedPost('Author_attachedPost1', 'Text_attachedPost1', '1 jan 2021', false);
+
+      //объекты вызывают метод(функцию-конструктора) и передают туда параметр в виде переменной или конкретного значения
+      post1.edit(editedText);
+      post2.edit('sample text');
+      post3.edit('');
+
+      //объект attachedPost1 вызывает собственный метод (ПОВЕДЕНИЕ), который меняет значение highlighted на TRUE
+      attachedPost1.makeTextHighlighted();
+
+      //выводим в консоль результат создания объектов
+      console.log(post1);
+      console.log(post2);
+      console.log(post3);
+      console.log(post4);
+
+      console.log(attachedPost1);
+
+      //функция Конструктор в стиле ES6
+      class Post2 {
+          constructor(author2, text2, date2) {
+            this.author2 = author2;
+            this.text2 = text2;
+            this.date2 = date2;
+          }
+
+          edit(editedText2) {
+              this.text2 = editedText2;
+          }
+      }
+
+      //функция-конструктор AttachedPost2 унаследует ДАННЫЕ (свойства объектов) функции-конструктора Post и создает свойство highlighted
+      class AttachedPost2 extends Post2 {
+          constructor(author2, text2, date2, highlighted2) {
+              super(author2, text2, date2);
+              this.highlighted2 = highlighted2;
+          }
+
+          makeTextHighlighted() {
+              this.highlighted2 = true;
+          }
+      }
+
+      //объявляем переменную и присваиваем ей значение. Эта переменная будет параметром при вызове метода 'edit'
+      let editedText2 = 'new_text2';
+      //создаем объект с помощью функции-конструктора
+      let post5 = new Post2('Author5', 'lorem ipsum', '5 dec 2020');
+      //создаем объект attachedPost2 с помощью функции-конструктора, которой передаем начальные значения свойства объекта
+      let attachedPost2 = new AttachedPost2('Author_attachedPost2', 'Text_attachedPost2', '10 jan 2021', false);
+
+      //объект вызывают метод(функцию-конструктора) и передают туда параметр в виде переменной или конкретного значения
+      post5.edit(editedText2);
+      //объект attachedPost2 вызывает собственный метод (ПОВЕДЕНИЕ), который меняет значение highlighted на TRUE
+      attachedPost2.makeTextHighlighted();
+
+      console.log(post5);
+      console.log(attachedPost2);
+
+    </script>
+</body>
+</html>
